@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20230404142509">
+	<link rel="stylesheet" href="css/style.min.css?_v=20230407181810">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,11 +45,13 @@
 					<div class="header__menu menu">
 						<nav class="menu__body">
 							<ul class="menu__list">
-								<li class="menu__item"><a href="" class="menu__link">Начальная школа (1-4 классы)</a></li>
-								<li class="menu__item"><a href="" class="menu__link">Подростковая школа (5-11 классы)</a></li>
-								<li class="menu__item"><a href="" class="menu__link">Студии и секции</a></li>
-								<li class="menu__item"><a href="" class="menu__link">Поступление</a></li>
-								<li class="menu__item"><a href="" class="menu__link">Проекты</a></li>
+								<li class="menu__item"><a href="start.html" class="menu__link">Начальная школа (1-4 классы)</a>
+								</li>
+								<li class="menu__item"><a href="teenage.html" class="menu__link">Подростковая школа (5-11
+										классы)</a></li>
+								<li class="menu__item"><a href="sections.html" class="menu__link">Студии и секции</a></li>
+								<li class="menu__item"><a href="english-sections.html" class="menu__link">Поступление</a></li>
+								<li class="menu__item"><a href="project.html" class="menu__link">Проекты</a></li>
 							</ul>
 							<div class="new-loc1"></div>
 							<div class="new-loc2"></div>
@@ -59,6 +61,14 @@
 			</div>
 		</header>
 		<main class="page">
+			<div class="top__buttons">
+				<button class="top__button-top">
+					<img src="img/catalog-svg/arrow-top.svg" alt="Стрелка вверх">
+				</button>
+				<button class="top__button-bottom">
+					<img src="img/catalog-svg/arrow-down.svg" alt="Стрелка Вниз">
+				</button>
+			</div>
 			<section class="top">
 				<div class="top__body">
 					<div class="splide" id="splide-1" role="group" aria-label="Splide Basic HTML Example">
@@ -74,21 +84,15 @@
 											<p>Обширная учебная программа</p>
 										</div>
 										<div class="top__button">
-											<button>Записаться на экскурсию</button>
+											<button data-fancybox data-src="#dialog-content">Записаться на
+												экскурсию</button>
 											<p>и получить бесплатное занятие по подготовке к школе в подарок</p>
 										</div>
 									</div>
 									<div class="top__image-ibg">
 										<picture><source srcset="img/main/top/1.webp" type="image/webp"><img src="img/main/top/1.jpg" alt="Слайдер 1"></picture>
 									</div>
-									<div class="top__buttons">
-										<button class="top__button-top">
-											<img src="img/catalog-svg/arrow-top.svg" alt="Стрелка вверх">
-										</button>
-										<button class="top__button-bottom">
-											<img src="img/catalog-svg/arrow-down.svg" alt="Стрелка Вниз">
-										</button>
-									</div>
+
 								</li>
 								<li class="splide__slide">
 									<div class="top__container-2">
@@ -99,20 +103,13 @@
 											<p>Обширная учебная программа 2</p>
 										</div>
 										<div class="top__button">
-											<button>Записаться на экскурсию</button>
+											<button data-fancybox data-src="#dialog-content">Записаться на
+												экскурсию</button>
 											<p>и получить бесплатное занятие по подготовке к школе в подарок</p>
 										</div>
 									</div>
 									<div class="top__image-ibg">
 										<picture><source srcset="img/main/top/1.webp" type="image/webp"><img src="img/main/top/1.jpg" alt="Слайдер 1"></picture>
-									</div>
-									<div class="top__buttons">
-										<button class="top__button-top">
-											<img src="img/catalog-svg/arrow-top.svg" alt="Стрелка вверх">
-										</button>
-										<button class="top__button-bottom">
-											<img src="img/catalog-svg/arrow-down.svg" alt="Стрелка Вниз">
-										</button>
 									</div>
 								</li>
 							</ul>
@@ -747,8 +744,13 @@
 					</div>
 				</div>
 			</section>
-			<section class="form">
+			<section class="form-block">
 				<div class="form__container-1">
+					<div class="form__thanks">
+						<div class="form__text">
+							<p>В ближайшее время мы с Вами свяжемся</p>
+						</div>
+					</div>
 					<div class="form__body">
 						<div class="form__title title">
 							<h2>Записаться на экскурсию</h2>
@@ -756,23 +758,23 @@
 						<div class="form__desc">
 							<p>и получить бесплатное занятие по подготовке к школе в подарок</p>
 						</div>
-						<form action="" class="form__box">
+						<form action="#" class="form__box form">
 							<div class="form__item">
 								<label for="formPhone">Ваш телефон для связи</label>
-								<input id="formPhone" class="tel" placeholder="+7" type="text" name="phone">
+								<input id="formPhone" required class="tel" placeholder="+7" type="text" name="phone">
 							</div>
 							<div class="form__item">
 								<label for="formName">Ваше имя</label>
-								<input id="formName" type="text" name="name">
+								<input id="formName" required type="text" name="name">
 								<button class="button-form-js">
-									<img data-src="img/catalog-svg/plus.svg" alt="Стереть" class="lazyload" />
+									<img src="img/catalog-svg/plus.svg" alt="Стереть" />
 								</button>
 							</div>
 							<div class="form__item">
 								<label for="formNameChild">Имя вашего ребенка</label>
 								<input id="formNameChild" type="text" name="nameChild">
 								<button class="button-form-js">
-									<img data-src="img/catalog-svg/plus.svg" alt="Стереть" class="lazyload" />
+									<img src="img/catalog-svg/plus.svg" alt="Стереть" />
 								</button>
 							</div>
 							<div class="form__item form__item_m">
@@ -791,7 +793,7 @@
 								<img data-src="img/catalog-svg/form-arrow.svg" alt="Стрелка" class="lazyload" />
 							</div>
 							<div class="form__item_m2">
-								<input id="formR" type="radio" value="32" name="school">
+								<input id="formR" type="radio" checked value="32" name="school">
 								<label for="formR">«Умка Школа» в МАОУ СОШ №32</label>
 
 								<input id="formL" type="radio" value="28" name="school">
@@ -803,6 +805,7 @@
 							</div>
 							<div class="form__button">
 								<button>Записаться на экскурсию</button>
+								<div class="form__preloader"></div>
 							</div>
 							<div class="form__policy">
 								<img data-src="img/catalog-svg/check.svg" alt="Ок" class="lazyload" />
@@ -856,13 +859,17 @@
 						<div class="top-footer__menu">
 							<nav class="top-footer__body">
 								<ul class="top-footer__list">
-									<li class="top-footer__item"><a href="" class="top-footer__link">Начальная школа (1-4
+									<li class="top-footer__item"><a href="start.html" class="top-footer__link">Начальная школа
+											(1-4
 											классы)</a></li>
-									<li class="top-footer__item"><a href="" class="top-footer__link">Подростковая школа (5-11
+									<li class="top-footer__item"><a href="teenage.html" class="top-footer__link">Подростковая
+											школа (5-11
 											классы)</a></li>
-									<li class="top-footer__item"><a href="" class="top-footer__link">Студии и секции</a></li>
-									<li class="top-footer__item"><a href="" class="top-footer__link">Поступление</a></li>
-									<li class="top-footer__item"><a href="" class="top-footer__link">Проекты</a></li>
+									<li class="top-footer__item"><a href="sections.html" class="top-footer__link">Студии и
+											секции</a></li>
+									<li class="top-footer__item"><a href="english-sections.html" class="top-footer__link">Поступление</a></li>
+									<li class="top-footer__item"><a href="project.html" class="top-footer__link">Проекты</a>
+									</li>
 								</ul>
 							</nav>
 						</div>
@@ -920,9 +927,14 @@
 			</div>
 		</footer>
 	</div>
-	<div id="dialog-content" style="display:none;max-width:1280px;">
-		<section class="form">
+	<div id="dialog-content" style="display:none;max-width:1280px; box-sizing: border-box;">
+		<section class="form-block">
 			<div class="form__container-1">
+				<div class="form__thanks">
+					<div class="form__text">
+						<p>В ближайшее время мы с Вами свяжемся</p>
+					</div>
+				</div>
 				<div class="form__body">
 					<div class="form__title title">
 						<h2>Записаться на экскурсию</h2>
@@ -930,23 +942,23 @@
 					<div class="form__desc">
 						<p>и получить бесплатное занятие по подготовке к школе в подарок</p>
 					</div>
-					<form action="" class="form__box">
+					<form action="#" class="form__box form">
 						<div class="form__item">
-							<label for="formPhone2">Ваш телефон для связи</label>
-							<input id="formPhone2" class="tel" placeholder="+7" type="text" name="phone2">
+							<label for="formPhone">Ваш телефон для связи</label>
+							<input id="formPhone" required class="tel" placeholder="+7" type="text" name="phone">
 						</div>
 						<div class="form__item">
-							<label for="formName2">Ваше имя</label>
-							<input id="formName2" type="text" name="name2">
+							<label for="formName">Ваше имя</label>
+							<input id="formName" required type="text" name="name">
 							<button class="button-form-js">
-								<img data-src="img/catalog-svg/plus.svg" alt="Стереть" class="lazyload" />
+								<img src="img/catalog-svg/plus.svg" alt="Стереть" />
 							</button>
 						</div>
 						<div class="form__item">
-							<label for="formNameChild2">Имя вашего ребенка</label>
-							<input id="formNameChild2" type="text" name="nameChild2">
+							<label for="formNameChild">Имя вашего ребенка</label>
+							<input id="formNameChild" type="text" name="nameChild">
 							<button class="button-form-js">
-								<img data-src="img/catalog-svg/plus.svg" alt="Стереть" class="lazyload" />
+								<img src="img/catalog-svg/plus.svg" alt="Стереть" />
 							</button>
 						</div>
 						<div class="form__item form__item_m">
@@ -965,18 +977,19 @@
 							<img data-src="img/catalog-svg/form-arrow.svg" alt="Стрелка" class="lazyload" />
 						</div>
 						<div class="form__item_m2">
-							<input id="formR2" type="radio" value="32" name="school2">
-							<label for="formR2">«Умка Школа» в МАОУ СОШ №32</label>
+							<input id="formR" type="radio" checked value="32" name="school">
+							<label for="formR">«Умка Школа» в МАОУ СОШ №32</label>
 
-							<input id="formL2" type="radio" value="28" name="school2">
-							<label for="formL2">«Умка Школа» в лицее №28</label>
+							<input id="formL" type="radio" value="28" name="school">
+							<label for="formL">«Умка Школа» в лицее №28</label>
 						</div>
 						<div class="form__item form__item_m3">
-							<label for="formMessage2">Задайте вопрос</label>
-							<textarea name="message2" id="formMessage2" placeholder="Ваш вопрос"></textarea>
+							<label for="formMessage">Задайте вопрос</label>
+							<textarea name="message" id="formMessage" placeholder="Ваш вопрос"></textarea>
 						</div>
 						<div class="form__button">
 							<button>Записаться на экскурсию</button>
+							<div class="form__preloader"></div>
 						</div>
 						<div class="form__policy">
 							<img data-src="img/catalog-svg/check.svg" alt="Ок" class="lazyload" />
@@ -984,10 +997,13 @@
 						</div>
 					</form>
 				</div>
+				<div class="form__bg">
+					<picture><source data-srcset="img/main/form/bg.webp" type="image/webp"><img data-src="img/main/form/bg.png" alt="Фон сайта" class="lazyload" /></picture>
+				</div>
 			</div>
 		</section>
 	</div>
-	<script src="js/app.min.js?_v=20230404142509"></script>
+	<script src="js/app.min.js?_v=20230407181810"></script>
 </body>
 
 </html>

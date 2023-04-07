@@ -6290,12 +6290,19 @@
         showMoreMy();
         function cleanInput() {
             let buttons = document.querySelectorAll(".button-form-js");
-            for (let elem of buttons) elem.addEventListener("click", (function(e) {
-                event.preventDefault();
-                let input = this.previousElementSibling;
-                input.value = "";
-                input.focus();
-            }));
+            for (let elem of buttons) {
+                let input2 = elem.previousElementSibling;
+                input2.oninput = function() {
+                    if (input2.value.length > 0) elem.classList.add("plus-active"); else elem.classList.remove("plus-active");
+                };
+                elem.addEventListener("click", (function(e) {
+                    event.preventDefault();
+                    let input = this.previousElementSibling;
+                    input.value = "";
+                    input.focus();
+                    this.classList.remove("plus-active");
+                }));
+            }
         }
         cleanInput();
         function selectArrow() {
@@ -6308,6 +6315,32 @@
         selectArrow();
         document.addEventListener("DOMContentLoaded", (function() {
             function initSliders() {
+                function newSliderMy() {
+                    let main4 = new Splide("#splide-10", {
+                        type: "fade",
+                        pagination: false,
+                        arrows: false
+                    });
+                    let thumbnails4 = new Splide("#splide-11", {
+                        perPage: 5,
+                        rewind: true,
+                        gap: 10,
+                        pagination: false,
+                        isNavigation: true,
+                        fixedWidth: 104,
+                        fixedHeight: 78,
+                        breakpoints: {
+                            1340: {
+                                pagination: true,
+                                arrows: false
+                            }
+                        }
+                    });
+                    main4.sync(thumbnails4);
+                    main4.mount();
+                    thumbnails4.mount();
+                }
+                if (document.getElementById("splide-10") && document.getElementById("splide-11")) newSliderMy();
                 if (document.querySelector("#splide-1")) new Splide("#splide-1", {
                     perPage: 1,
                     rewind: true,
@@ -6362,24 +6395,76 @@
                         }
                     }
                 }).mount();
+                var main = new Splide("#splide-6", {
+                    type: "fade",
+                    pagination: false,
+                    arrows: false
+                });
+                var thumbnails = new Splide("#splide-7", {
+                    perPage: 5,
+                    rewind: true,
+                    gap: 10,
+                    pagination: false,
+                    isNavigation: true,
+                    fixedWidth: 104,
+                    fixedHeight: 78,
+                    breakpoints: {
+                        1340: {
+                            pagination: true,
+                            arrows: false
+                        }
+                    }
+                });
+                main.sync(thumbnails);
+                main.mount();
+                thumbnails.mount();
+                var main2 = new Splide("#splide-8", {
+                    type: "fade",
+                    pagination: false,
+                    arrows: false
+                });
+                var thumbnails2 = new Splide("#splide-9", {
+                    perPage: 5,
+                    rewind: true,
+                    gap: 10,
+                    pagination: false,
+                    isNavigation: true,
+                    fixedWidth: 104,
+                    fixedHeight: 78,
+                    breakpoints: {
+                        1340: {
+                            pagination: true,
+                            arrows: false
+                        }
+                    }
+                });
+                main2.sync(thumbnails2);
+                main2.mount();
+                thumbnails2.mount();
             }
             initSliders();
         }));
         function buttonOne() {
-            let buttons1 = document.querySelectorAll(".top__button-top");
-            for (let elem1 of buttons1) elem1.addEventListener("click", (function(event) {
-                event.preventDefault();
-                let buttons2 = document.querySelectorAll(".splide__arrow--prev");
-                for (let elem2 of buttons2) elem2.click();
+            let buttonDown = document.querySelectorAll(".top__button-top");
+            if (buttonDown) for (let elem of buttonDown) elem.addEventListener("click", (function(e) {
+                e.preventDefault();
+                window.scrollBy({
+                    top: -window.innerHeight,
+                    left: 0,
+                    behavior: "smooth"
+                });
             }));
         }
         buttonOne();
         function buttonTwo() {
-            let buttons1 = document.querySelectorAll(".top__button-bottom");
-            for (let elem1 of buttons1) elem1.addEventListener("click", (function(event) {
-                event.preventDefault();
-                let buttons2 = document.querySelectorAll(".splide__arrow--next");
-                for (let elem2 of buttons2) elem2.click();
+            let buttonDown = document.querySelectorAll(".top__button-bottom");
+            if (buttonDown) for (let elem of buttonDown) elem.addEventListener("click", (function(e) {
+                e.preventDefault();
+                window.scrollBy({
+                    top: window.innerHeight,
+                    left: 0,
+                    behavior: "smooth"
+                });
             }));
         }
         buttonTwo();
@@ -6415,6 +6500,38 @@
             }));
         }
         mascTel();
+        document.addEventListener("DOMContentLoaded", (function() {
+            let forms = document.querySelectorAll("form");
+            for (let form of forms) {
+                let mainBlock = form.closest(".form-block");
+                let thanks = mainBlock.querySelector(".form__thanks");
+                let bg = mainBlock.querySelector(".form__bg");
+                let preloader = form.querySelector(".form__preloader");
+                let formBody = form.closest(".form__body");
+                form.addEventListener("submit", formSend);
+                async function formSend(e) {
+                    e.preventDefault();
+                    preloader.classList.add("active-preloader");
+                    setTimeout((function() {
+                        preloader.classList.remove("active-preloader");
+                        bg.classList.add("delete-bg");
+                        formBody.classList.add("deleteForm");
+                        thanks.classList.add("active-thanks");
+                        mainBlock.classList.add("main-block");
+                    }), 1e3);
+                    if (0 === error) {
+                        let response = await fetch("/ajax/feedback.php", {
+                            method: "POST",
+                            body: formData
+                        });
+                        if (response.ok) {
+                            await response.json();
+                            form.classList.add("deleteForm");
+                        } else alert("Ошибка");
+                    } else alert("Заполните обязательные поля");
+                }
+            }
+        }));
         window["FLS"] = true;
         isWebp();
         menuInit();
