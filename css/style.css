@@ -1600,10 +1600,11 @@ h6 {
   }
 }
 .first-slider .splide__slide a {
-  display: block;
+  display: block !important;
 }
 
 .first-slider {
+  display: block;
   position: relative;
 }
 .first-slider__image img {
@@ -1617,6 +1618,10 @@ h6 {
 .first-slider__play img {
   width: 88px;
   height: 65px;
+}
+
+.first-slider {
+  display: block !important;
 }
 
 .second-slider {
